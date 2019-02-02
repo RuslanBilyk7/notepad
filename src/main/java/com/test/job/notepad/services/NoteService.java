@@ -5,7 +5,7 @@ import com.test.job.notepad.domain.Note;
 import java.util.List;
 
 public interface NoteService {
-    void addNote(Note user);
+    void addNote(Note note);
 
     void deleteNote(Integer id);
 
@@ -13,5 +13,7 @@ public interface NoteService {
 
     Note getNoteById(Integer id);
 
-    Note saveOrUpdateUser(Note note);
+    Note saveOrUpdateNote(Note note);
+
+    List<Note> getAllNotesByUser(Integer id);
 }

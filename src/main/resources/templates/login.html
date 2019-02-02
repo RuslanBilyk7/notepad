@@ -4,12 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Login page</title>
-</head>
+
+    <title>Departments List</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <body>
-Hello User! Please, enter your login and password!
+<div th:if="${param.error} ">
+    Invalid username and password.
+</div>
+<div th:if="${param.logout}">
+    You have been logged out.
+</div>
+<div class="form-control"><label> Please, enter your login and password! </label></div>
 
+<form th:action="@{/login}" method="post" class="form-group">
+    <div><label> User Name : <input type="text" class="form-control" name="username"/> </label></div>
+    <div><label> Password: <input type="password" class="form-control" name="password"/> </label></div>
+    <div><input type="submit" class="btn btn-info" value="Sign In"/></div>
+</form>
 
-
-<a th:href="@{http://localhost:8080/registration}">Registration for new users</a>
+<a th:href="@{/user/new}">Registration</a>
 </body>
 </html>
