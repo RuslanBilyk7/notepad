@@ -28,7 +28,6 @@ public class MainController {
         return "notes";
     }
 
-
     @RequestMapping("/login")
     public String login(Model model) {
         return "login";

@@ -1,34 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
     <title>Notes</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-
-    <!--<link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"-->
-    <!--th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"-->
-    <!--rel="stylesheet" media="screen"/>-->
-
-    <!--<script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.4/jquery.min.js"-->
-    <!--th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>-->
-
-    <!--<link href="../../static/css/spring-core.css"-->
-    <!--th:href="@{css/spring-core.css}" rel="stylesheet" media="screen"/>-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
+<h2 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h2>
+
+<form th:action="@{/users}" method="post">
+    <input type="submit" class="btn btn-info" value="ALL USERS"/>
+</form>
 
 <div class="container">
-    <!--<div th:if="${not #lists.isEmpty(notes)}">-->
     <div th:if="${not #lists.isEmpty(notes)}">
         <h2>Notes</h2>
         <table class="table table-striped">
             <tr>
-                <!--<th>Id</th>-->
                 <th>Note</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
             <tr th:each="note : ${notes}">
-                <!--<td th:text="${note.noteId}"></td>-->
                 <td th:text="${note.noteContent}"></td>
                 <td><a th:href="${'/note/edit/' + note.noteId}">Edit</a></td>
                 <td><a th:href="${'/note/delete/' + note.noteId}">Delete</a></td>
@@ -37,13 +32,13 @@
     </div>
     <div class="row">
         <div class="col-sm-3">
-            <a href="/note/new">New note</a>
+            <a href="/note/new" class="btn btn-info">New note</a>
         </div>
     </div>
 </div>
 
 <form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
+    <input type="submit" class="btn btn-info" value="Sign Out"/>
 </form>
 
 </body>

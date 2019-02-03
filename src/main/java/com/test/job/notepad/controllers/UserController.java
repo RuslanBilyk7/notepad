@@ -28,7 +28,7 @@ public class UserController {
     public String newUser(Model model) {
         User user = new User();
         model.addAttribute("user", user);
-        return "addEditUser";
+        return "addUser";
     }
 
     @RequestMapping("/user/delete/{id}")
@@ -40,9 +40,10 @@ public class UserController {
     @RequestMapping(value = "/user/save", method = RequestMethod.POST)
     public String saveOrUpdateUser(@Valid User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "addEditUser";
+            return "addUser";
         }
         User savedUser = userService.saveOrUpdateUser(user);
+//        return "redirect:/users";
         return "redirect:/users";
     }
 
@@ -50,6 +51,6 @@ public class UserController {
     public String editUser(@PathVariable String id, Model model) {
         User user = userService.getUserById(Integer.valueOf(id));
         model.addAttribute("user", user);
-        return "addEditUser";
+        return "editUser";
     }
 }
