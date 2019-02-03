@@ -3,6 +3,8 @@ package com.test.job.notepad.services;
 import com.test.job.notepad.domain.Note;
 import com.test.job.notepad.domain.User;
 import com.test.job.notepad.repositories.NoteRepository;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,7 @@ import java.util.List;
 
 @Service
 public class NoteServiceImpl implements NoteService {
+    Logger logger = LogManager.getLogger(NoteServiceImpl.class);
 
     @Autowired
     private NoteRepository noteRepository;
@@ -31,6 +34,7 @@ public class NoteServiceImpl implements NoteService {
         for (Note note : noteRepository.findAll()) {
             target.add(note);
         }
+        logger.info("Fetching all users in info {}", 2);
         return target;
     }
 
@@ -44,8 +48,6 @@ public class NoteServiceImpl implements NoteService {
         }
         return target;
     }
-
-
 
     @Override
     public Note getNoteById(Integer id) {

@@ -43,7 +43,6 @@ public class UserController {
             return "addUser";
         }
         User savedUser = userService.saveOrUpdateUser(user);
-//        return "redirect:/users";
         return "redirect:/users";
     }
 

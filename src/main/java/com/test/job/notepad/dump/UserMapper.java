@@ -1,11 +1,10 @@
-package com.test.job.notepad;
-
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
+package com.test.job.notepad.dump;
 
 import com.test.job.notepad.domain.User;
 import org.springframework.jdbc.core.RowMapper;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class UserMapper implements RowMapper<User> {
 

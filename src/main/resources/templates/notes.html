@@ -30,12 +30,12 @@
             </tr>
         </table>
     </div>
-    <div class="row">
-        <div class="col-sm-3">
-            <a href="/note/new" class="btn btn-info">New note</a>
-        </div>
-    </div>
+
 </div>
+
+<form th:action="@{/note/new}" method="post">
+    <a href="/note/new" class="btn btn-info">New note</a>
+</form>
 
 <form th:action="@{/logout}" method="post">
     <input type="submit" class="btn btn-info" value="Sign Out"/>
